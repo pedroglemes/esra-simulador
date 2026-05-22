@@ -1,0 +1,8 @@
+{
+  "name": "esra-simulador",
+  "version": "1.0.0",
+  "description": "Simulador PBL – Elaboração de ESRA (FSC) – SilvaFlora",
+  "engines": {
+    "node": "24.x"
+  }
+}
