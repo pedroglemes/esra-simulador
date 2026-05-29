@@ -7,111 +7,59 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
-        body { 
-            background-color: #f9f9fb; 
-            font-family: 'Inter', sans-serif;
-            color: #111827;
-        }
-        
-        .glass-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        }
-
-        .recording-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #ef4444;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-        
+        body { background-color: #f9f9fb; font-family: 'Inter', sans-serif; color: #111827; }
+        .glass-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); }
+        .recording-indicator { display: inline-block; width: 10px; height: 10px; background-color: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239,68,68,0); }
         }
-
-        select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
-        }
+        select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-8 flex items-center justify-center">
 
-    <!-- TELA 1: APRESENTAÇÃO -->
     <div id="telaApresentacao" class="w-full max-w-3xl mx-auto glass-card p-8 md:p-10 rounded-3xl">
         <div class="mb-8 text-center">
             <span class="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Simulação Interativa</span>
             <h1 class="text-3xl font-bold mt-4 mb-2">PBL – Elaboração de ESRA</h1>
             <p class="text-gray-500">SilvaFlora Reflorestamentos S.A. • Certificação FSC</p>
         </div>
-        
         <div class="space-y-6 text-gray-600 leading-relaxed">
             <div class="p-5 bg-gray-50 rounded-2xl border border-gray-100">
-                <h2 class="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Contexto
-                </h2>
+                <h2 class="text-lg font-semibold text-gray-900 mb-2">Contexto</h2>
                 <p class="mb-3">Vocês foram contratados pela empresa florestal <strong>SilvaFlora</strong> localizada em Bocaiúva, MG.</p>
                 <p class="mb-3">A empresa está enfrentando problemas com o <strong>psilídeo-de-concha</strong> em seus plantios de eucalipto e precisará utilizar um pesticida classificado como altamente perigoso segundo o FSC.</p>
                 <p>Isso exige a elaboração de um <strong>ESRA (Environmental & Social Risk Assessment)</strong>.</p>
             </div>
-
             <div>
                 <h2 class="text-lg font-semibold text-gray-900 mb-3">Sua Missão</h2>
                 <ul class="space-y-2">
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></div>
-                        <span>Fazer perguntas aos funcionários da empresa via chamada de voz.</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></div>
-                        <span>Coletar informações com diferentes setores (cada um possui apenas uma parte dos dados).</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></div>
-                        <span>Elaborar um ESRA completo, conforme as exigências do FSC.</span>
-                    </li>
+                    <li class="flex items-start gap-3"><div class="mt-1 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></div><span>Fazer perguntas aos funcionários da empresa via chamada de voz.</span></li>
+                    <li class="flex items-start gap-3"><div class="mt-1 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></div><span>Coletar informações com diferentes setores (cada um possui apenas uma parte dos dados).</span></li>
+                    <li class="flex items-start gap-3"><div class="mt-1 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></div><span>Elaborar um ESRA completo, conforme as exigências do FSC.</span></li>
                 </ul>
             </div>
         </div>
-
         <div class="mt-10 flex justify-center">
-            <button onclick="irParaSimulacao()" class="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-8 rounded-full transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                Iniciar Simulação
-            </button>
+            <button onclick="irParaSimulacao()" class="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-8 rounded-full transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow">Iniciar Simulação</button>
         </div>
     </div>
 
-    <!-- TELA 2: SIMULAÇÃO (LIGAÇÃO) -->
     <div id="telaSimulacao" class="w-full max-w-md mx-auto glass-card p-6 md:p-8 rounded-3xl hidden relative">
         <button onclick="voltarApresentacao()" class="absolute top-6 left-6 text-gray-400 hover:text-gray-700 transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
         </button>
-
         <div class="mt-8 flex flex-col items-center">
-            <!-- AVATAR DO PERSONAGEM -->
             <div class="relative mb-6">
                 <div class="w-28 h-28 rounded-full overflow-hidden border border-gray-200 shadow-sm bg-gray-100">
                     <img id="avatarPersonagem" src="https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.20-PM.png" alt="Avatar" class="w-full h-full object-cover" onerror="this.src='https://picsum.photos/200';">
                 </div>
-                <!-- Status badge -->
                 <div class="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
             </div>
-
             <h2 class="text-xl font-semibold text-gray-900 mb-1">Diretório da Empresa</h2>
             <p class="text-sm text-gray-500 mb-8">Selecione o ramal desejado</p>
-
-            <!-- Seleção de Personagem -->
             <div class="w-full mb-8">
                 <select id="personagemSelect" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-700 focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all cursor-pointer">
                     <option value="cristiano">Cristiano – Gerente de Plantação</option>
@@ -120,20 +68,10 @@
                     <option value="yuri">Yuri – Relações com Comunidade</option>
                 </select>
             </div>
-
-            <!-- Controles de Chamada -->
             <div class="w-full flex gap-3">
-                <button id="startBtn" onclick="iniciarProcessoChamada()" class="flex-1 bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-xl transition-colors flex justify-center items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    Ligar
-                </button>
-                <button id="stopBtn" onclick="encerrarChamada()" disabled class="flex-1 bg-red-50 hover:bg-red-100 text-red-600 font-medium py-3 px-4 rounded-xl transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex justify-center items-center gap-2 border border-red-100">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.516l2.257-1.13a1 1 0 00.502-1.21L9.22 3.684A1 1 0 008.272 3H5z"></path></svg>
-                    Desligar
-                </button>
+                <button id="startBtn" onclick="iniciarProcessoChamada()" class="flex-1 bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-xl transition-colors flex justify-center items-center gap-2">Ligar</button>
+                <button id="stopBtn" onclick="encerrarChamada()" disabled class="flex-1 bg-red-50 hover:bg-red-100 text-red-600 font-medium py-3 px-4 rounded-xl transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex justify-center items-center gap-2 border border-red-100">Desligar</button>
             </div>
-
-            <!-- Status da Chamada -->
             <div class="w-full mt-6 flex flex-col items-center justify-center min-h-[60px]">
                 <p id="statusText" class="text-sm text-gray-500 font-medium">Pronto para iniciar chamada</p>
                 <div id="recordingIcon" class="hidden mt-2 flex items-center bg-gray-100 px-3 py-1.5 rounded-full">
@@ -147,87 +85,38 @@
     <audio id="audioElement" autoplay></audio>
 
     <script>
-        // ==========================================
-        // 🔑 A chave da API fica no servidor (.env)
-        //    O browser busca apenas um token temporário
-        //    via GET /api/session — nenhum aluno vê a chave.
-        // ==========================================
-
-        // ==========================================
-        // GERADOR DE ÁUDIO (Sons de Telefone via Web Audio API)
-        // ==========================================
-        let audioCtx;
-        let oscillator1, oscillator2, gainNode;
-        let ringInterval;
+        let audioCtx, oscillator1, oscillator2, gainNode, ringInterval;
 
         function initAudio() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
         }
-
         function playDialingSound() {
-            initAudio();
-            stopAudio(); // Limpa qualquer som anterior
-            
-            // Frequências DTMF simulando discagem rápida
-            const tones = [ [697, 1209], [697, 1336], [770, 1209], [770, 1477], [852, 1336] ];
+            initAudio(); stopAudio();
+            const tones = [[697,1209],[697,1336],[770,1209],[770,1477],[852,1336]];
             let time = audioCtx.currentTime;
-            
             tones.forEach(freqs => {
-                const osc1 = audioCtx.createOscillator();
-                const osc2 = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                
-                osc1.type = 'sine'; osc1.frequency.value = freqs[0];
-                osc2.type = 'sine'; osc2.frequency.value = freqs[1];
-                
-                gain.gain.setValueAtTime(0.1, time);
-                gain.gain.setValueAtTime(0, time + 0.1); // Duração de cada bipe
-                
+                const osc1 = audioCtx.createOscillator(), osc2 = audioCtx.createOscillator(), gain = audioCtx.createGain();
+                osc1.type='sine'; osc1.frequency.value=freqs[0]; osc2.type='sine'; osc2.frequency.value=freqs[1];
+                gain.gain.setValueAtTime(0.1, time); gain.gain.setValueAtTime(0, time+0.1);
                 osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination);
-                
-                osc1.start(time); osc2.start(time);
-                osc1.stop(time + 0.15); osc2.stop(time + 0.15);
-                
-                time += 0.15; // Espaço entre os bipes
+                osc1.start(time); osc2.start(time); osc1.stop(time+0.15); osc2.stop(time+0.15);
+                time += 0.15;
             });
         }
-
         function playRingingSound() {
-            initAudio();
-            stopAudio();
-
-            gainNode = audioCtx.createGain();
-            gainNode.connect(audioCtx.destination);
-            gainNode.gain.value = 0;
-
-            oscillator1 = audioCtx.createOscillator();
-            oscillator2 = audioCtx.createOscillator();
-            
-            // Frequências padrão de tom de chamada (Ringback tone)
-            oscillator1.frequency.value = 440;
-            oscillator2.frequency.value = 480;
-            
-            oscillator1.connect(gainNode);
-            oscillator2.connect(gainNode);
-            
-            oscillator1.start();
-            oscillator2.start();
-
-            // Padrão de toque: 2s tocando, 4s silêncio
+            initAudio(); stopAudio();
+            gainNode = audioCtx.createGain(); gainNode.connect(audioCtx.destination); gainNode.gain.value = 0;
+            oscillator1 = audioCtx.createOscillator(); oscillator2 = audioCtx.createOscillator();
+            oscillator1.frequency.value = 440; oscillator2.frequency.value = 480;
+            oscillator1.connect(gainNode); oscillator2.connect(gainNode);
+            oscillator1.start(); oscillator2.start();
             const ringCycle = () => {
                 gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
                 gainNode.gain.setValueAtTime(0, audioCtx.currentTime + 2);
             };
-            
-            ringCycle();
-            ringInterval = setInterval(ringCycle, 4000);
+            ringCycle(); ringInterval = setInterval(ringCycle, 4000);
         }
-
         function stopAudio() {
             if (ringInterval) clearInterval(ringInterval);
             if (gainNode) gainNode.gain.value = 0;
@@ -235,15 +124,12 @@
             if (oscillator2) { oscillator2.stop(); oscillator2.disconnect(); oscillator2 = null; }
         }
 
-       // ==========================================
-        // PROMPTS DOS PERSONAGENS (100% ORIGINAIS)
-        // ==========================================
         const caso_base = `
 CONTEXTO DO CASO – ESRA FSC
 Empresa que trabalham: SilvaFlora (reflorestamentos). Produz eucalipto para produção de carvão vegetal.
-Empresa certificada pelo FSC desde 2016. 
+Empresa certificada pelo FSC desde 2016.
 Localização: Bocaiúva – MG.
-Plantação de Eucalyptus grandis x Eucalyptus urophylla (urograndis) – clones I144, GG100, IPB2, H017, H1069. Plantado em mosaico então o clone depende do talhão. Tem mais de 50 talhões na empresa, e eles tem entre 35 e 40 hectares. Os talhões que vão ser tratados contra o psilídeo são os 35 (clone plantado I144) ,48 (clone GG100),49  (clone plantado I144),52(clone plantado I144),54 (GG100),60 (H1069). Os talhões atacados pelo psilídeo são vizinhos um ao outro e se encontram na parte mais central da plantação. 
+Plantação de Eucalyptus grandis x Eucalyptus urophylla (urograndis) – clones I144, GG100, IPB2, H017, H1069. Plantado em mosaico então o clone depende do talhão. Tem mais de 50 talhões na empresa, e eles tem entre 35 e 40 hectares. Os talhões que vão ser tratados contra o psilídeo são os 35 (clone plantado I144), 48 (clone GG100), 49 (clone plantado I144), 52 (clone plantado I144), 54 (GG100), 60 (H1069). Os talhões atacados pelo psilídeo são vizinhos um ao outro e se encontram na parte mais central da plantação.
 
 Praga que está atacando a plantação: Psilídeo-de-concha.
 Monitoramento do psilídeo: quinzenal com armadilhas adesivas amarelas (1 a cada 5 ha), colocadas entre as linhas de plantio a um metro e oitenta de altura.
@@ -252,24 +138,22 @@ Nível de dano econômico: 20 indivíduos por armadilha.
 
 Produto a ser usado na infestação: FASTAC DUO (BASF).
 Ingredientes ativos: Acetamiprido e Alfa-cipermetrina.
-Pulveirização via avião, pelo tamanho das árvores.
+Pulverização via avião, pelo tamanho das árvores.
 
 Ribeirão mais próximo: Ribeirão Nossa Senhora das Dores a 900 m do local onde vai ser aplicado o inseticida.
 Comunidade mais próxima: 8 km (Comunidade Santa Helena).
 Histórico de pequeno vazamento em 2020, controlado.
 `;
-
         const modo_avancado = `
 MODO AVANÇADO – DIRETRIZES DE COMPORTAMENTO HUMANO (MUITO IMPORTANTE)
 
 1. NUNCA soe como uma Inteligência Artificial ou como o ChatGPT. Você é um humano trabalhando em uma empresa.
 2. SEJA BREVE: Suas respostas devem ser curtas, diretas e conversacionais. Máximo de 2 a 3 frases por resposta.
-3. CORTANDO ASSUNTOS PESSOAIS: Se o usuário perguntar sobre seu time de futebol, hobbies ou vida pessoal, responda em APENAS UMA FRASE curta e imediatamente mude de assunto dizendo que está no horário de expediente e precisa focar no trabalho. Exemplo: "Ah, sou atleticano sim, mas voltando ao assunto, o que você precisa saber sobre a plantação?"
-4. IGNORÂNCIA HUMANA (CONHECIMENTOS GERAIS): Se o usuário fizer perguntas de conhecimentos gerais fora do escopo estrito do seu trabalho na empresa (ex: "Onde nasce a araucária?", "Qual a capital da França?", "Me explique a fotossíntese"), AJA COMO UM HUMANO CONFUSO. Diga: "Olha, não sei te dizer isso de cabeça não" ou "O que isso tem a ver com o nosso problema aqui na empresa?". NUNCA dê uma aula ou explicação enciclopédica.
+3. CORTANDO ASSUNTOS PESSOAIS: Se o usuário perguntar sobre seu time de futebol, hobbies ou vida pessoal, responda em APENAS UMA FRASE curta e imediatamente mude de assunto dizendo que está no horário de expediente e precisa focar no trabalho.
+4. IGNORÂNCIA HUMANA: Se o usuário fizer perguntas de conhecimentos gerais fora do escopo do seu trabalho, AJA COMO UM HUMANO CONFUSO. Diga: "Olha, não sei te dizer isso de cabeça não" ou "O que isso tem a ver com o nosso problema aqui na empresa?". NUNCA dê uma aula enciclopédica.
 5. Não antecipe fragilidades. Não complemente informação não solicitada.
 6. Nunca invente novos fatos ou contradiga dados estruturais do caso.
 `;
-
         const estrutura_organizacional = `
 ESTRUTURA ORGANIZACIONAL
 
@@ -282,196 +166,160 @@ Você trabalha em equipe com:
 Se perguntarem sobre algo fora da sua área, sugira o colega correto, mas não transfira automaticamente a responsabilidade.
 `;
 
-        // --- CRISTIANO ---
         const perspectiva_cristiano = `Você é o Gerente de Plantação. Foco em produção, perdas e necessidade operacional. Você responde com base na prática de campo. Não domina detalhes toxicológicos.`;
-        const camada_cristiano = `IDENTIDADE DO PERSONAGEM: Nome: Cristiano. Idade: 36 anos. Formação: Engenheiro Florestal (UFV). Natural de: Pouso Alegre – MG. Tempo na empresa: 8 anos. Tempo como gerente: 5 anos. Perfil: Você é objetivo e direto. Foca em produtividade e resultado. Costuma responder com segurança. Não entra em detalhes excessivamente técnicos se não forem da sua área. Evita demonstrar incerteza.`;
+        const camada_cristiano = `IDENTIDADE: Nome: Cristiano. Idade: 36 anos. Formação: Engenheiro Florestal (UFV). Natural de: Pouso Alegre – MG. Tempo na empresa: 8 anos. Tempo como gerente: 5 anos. Perfil: objetivo e direto. Foca em produtividade.`;
         const prompt_cristiano_final = `
-🎭 IDENTIDADE
+IDENTIDADE
 Sua primeira frase ao atender o telefone DEVE ser EXATAMENTE: "Alô, tudo bem? Com quem eu falo?"
 Você é Cristiano Almeida, 36 anos, Engenheiro Florestal.
-Você trabalha na empresa SilvaFlora Reflorestamentos S.A., certificada pelo FSC desde 2016, localizada em Bocaiúva – MG.
-Você é tecnicamente competente, objetivo e organizado.
+Você trabalha na SilvaFlora Reflorestamentos S.A., certificada pelo FSC desde 2016, em Bocaiúva – MG.
 
-📌 CONTEXTO PRODUTIVO
-Espécie plantada: Eucalyptus grandis x Eucalyptus urophylla (urograndis)
+CONTEXTO PRODUTIVO
+Espécie plantada: Eucalyptus grandis x Eucalyptus urophylla (urograndis).
 Talhões que vão ser tratados: 35, 48, 49, 52, 54 e 60.
 Área total aproximada: 240 hectares. Cada talhão possui entre 35 e 40 hectares.
 
-🐛 PRAGA E CONTROLE
+PRAGA E CONTROLE
 Praga: Psilídeo-de-concha.
 Monitoramento: Frequência quinzenal. Armadilhas adesivas amarelas. 1 armadilha a cada 5 hectares.
 Nível de dano econômico: 20 adultos por armadilha por talhão.
 Infestação atual: Superior a 200 adultos por armadilha. Infestação severa.
 Produto utilizado: FASTAC DUO (BASF).
-A aplicação será aérea devido à dimensão da área e severidade da infestação (só fale se perguntado).
+A aplicação será aérea devido à dimensão da área (só fale se perguntado).
 
-🎙️ ESTILO DE RESPOSTA (IMPORTANTE)
-Responda como um gerente florestal ocupado no telefone. Respostas curtas e diretas. SEMPRE corte papo furado ou perguntas de conhecimentos gerais que não tenham a ver com o eucalipto da SilvaFlora. Se perguntarem do Cruzeiro, diga "Sou cruzeirense sim, mas a gente tá com um problema sério de praga aqui, o que você precisa?".
+ESTILO DE RESPOSTA
+Responda como um gerente florestal ocupado no telefone. Respostas curtas e diretas. SEMPRE corte papo furado ou conhecimentos gerais que não tenham a ver com o eucalipto da SilvaFlora. Se perguntarem do Cruzeiro, diga "Sou cruzeirense sim, mas a gente tá com um problema sério de praga aqui, o que você precisa?".
 `;
         const prompt_cristiano = caso_base + estrutura_organizacional + perspectiva_cristiano + modo_avancado + camada_cristiano + prompt_cristiano_final;
 
-        // --- NATÁLIA ---
-        const perspectiva_natalia = `Você é a responsável ambiental. Foco técnico e documental. Responde com base em registros formais.`;
-        const camada_natalia = `IDENTIDADE DO PERSONAGEM: Nome: Natália. Idade: 34 anos. Formação: Engenheira Ambiental (UFLA). Tempo na empresa: 12 anos. Perfil: Você é técnica, criteriosa e baseada em registros. Prefere responder com precisão. Evita generalizações.`;
+        const perspectiva_natalia = `Você é a responsável ambiental. Foco técnico e documental.`;
+        const camada_natalia = `IDENTIDADE: Nome: Natália. Idade: 34 anos. Formação: Engenheira Ambiental (UFLA). Tempo na empresa: 12 anos. Perfil: técnica, criteriosa, baseada em registros.`;
         const prompt_natalia_final = `
-🎭 IDENTIDADE
+IDENTIDADE
 Sua primeira frase ao atender o telefone DEVE ser EXATAMENTE: "SilvaFlora, Natália bom dia, com que eu falo?"
 Você é Natália Martins, 34 anos. Engenheira Ambiental.
-Trabalha na empresa há 12 anos. Tem postura profissional, analítica e cautelosa.
 
-🌎 CONTEXTO AMBIENTAL DA ÁREA
-Distância do curso d’água mais próximo: 900 metros (Ribeirão Nossa Senhora das Dores).
+CONTEXTO AMBIENTAL
+Distância do curso d'água mais próximo: 900 metros (Ribeirão Nossa Senhora das Dores).
 APP: Faixa de vegetação nativa superior a 150 metros em ambas margens. Não há pulverização dentro da APP.
 Produto comercial: FASTAC DUO (BASF). Ingredientes ativos: Acetamiprido, Alfa-cipermetrina.
 
-🛢️ HISTÓRICO DE DERRAMAMENTOS
+HISTÓRICO DE DERRAMAMENTOS
 Junho de 2020: Vazamento estimado de 3 litros de solução diluída. Solo removido.
 Maio de 2022: Pequeno vazamento contido com kit anti-spill.
 Agosto de 2023: Rompimento de embalagem. Material recolhido.
 Nenhum atingiu corpo hídrico.
 
-🎙️ ESTILO DE RESPOSTA (IMPORTANTE)
-Responda de forma técnica, mas conversacional e curta. Você está no telefone trabalhando. Se perguntarem sobre biologia geral, botânica ou coisas fora do seu escopo da empresa, diga que isso não é relevante para a avaliação de risco atual. Se perguntarem do Flamengo, diga "Sou flamenguista, mas vamos focar no ESRA por favor".
+ESTILO DE RESPOSTA
+Responda técnica, conversacional e curta. Se perguntarem sobre biologia geral fora do seu escopo, diga que isso não é relevante. Se perguntarem do Flamengo, diga "Sou flamenguista, mas vamos focar no ESRA por favor".
 `;
         const prompt_natalia = caso_base + estrutura_organizacional + perspectiva_natalia + modo_avancado + camada_natalia + prompt_natalia_final;
 
-        // --- ISADORA ---
-        const perspectiva_isadora = `Você é responsável por RH. Foco em treinamento, EPI e segurança do trabalhador. Responde com base no que está formalmente estabelecido.`;
-        const camada_isadora = `IDENTIDADE DO PERSONAGEM: Nome: Isadora. Idade: 24 anos. Formação: Administração. Tempo na empresa: 2 anos. Perfil: Você é organizada e confia nos processos formais.`;
+        const perspectiva_isadora = `Você é responsável por RH. Foco em treinamento, EPI e segurança do trabalhador.`;
+        const camada_isadora = `IDENTIDADE: Nome: Isadora. Idade: 24 anos. Formação: Administração. Tempo na empresa: 2 anos. Perfil: organizada e confia nos processos formais.`;
         const prompt_isadora_final = `
-🎭 IDENTIDADE
+IDENTIDADE
 Sua primeira frase ao atender o telefone DEVE ser EXATAMENTE: "Alô, quem está falando?"
 Você é Isadora Ferreira, 24 anos. Gerente de Recursos Humanos.
-Você responde de forma clara, direta e simples. Não é especialista técnica em pesticidas.
 
-👷 RESPONSABILIDADES
+RESPONSABILIDADES
 Você é responsável por: Treinamentos obrigatórios (NR-31), Controle de EPIs, Acompanhamento médico.
-A empresa fornece todos os equipamentos exigidos pela legislação e pela bula.
-Os aplicadores realizam exames admissionais e periódicos. Não há registro de intoxicações graves.
+A empresa fornece todos os equipamentos exigidos pela legislação.
+Aplicadores realizam exames admissionais e periódicos. Não há registro de intoxicações graves.
 
-🎙️ ESTILO DE RESPOSTA (IMPORTANTE)
-Responda como uma jovem de RH no telefone. Seja objetiva. Se fizerem perguntas fora do seu setor (como meio ambiente ou conhecimentos gerais), diga "Ixi, isso aí eu não sei te responder não, minha área é só o RH e a segurança do pessoal". Se perguntarem do Atlético-MG, fale rápido "Galo doido! Mas o que você precisa saber dos funcionários?".
+ESTILO DE RESPOSTA
+Responda como uma jovem de RH no telefone. Objetiva. Se perguntarem fora do seu setor, diga "Ixi, isso aí eu não sei te responder não, minha área é só o RH e a segurança do pessoal". Se perguntarem do Atlético-MG: "Galo doido! Mas o que você precisa saber dos funcionários?".
 `;
         const prompt_isadora = caso_base + estrutura_organizacional + perspectiva_isadora + modo_avancado + camada_isadora + prompt_isadora_final;
 
-        // --- YURI ---
-        const perspectiva_yuri = `Você é responsável pelo relacionamento comunitário. Foco em comunicação externa e percepção da comunidade. Não domina detalhes técnicos internos.`;
-        const camada_yuri = `IDENTIDADE DO PERSONAGEM: Nome: Yuri. Idade: 28 anos. Formação: Agronomia + Mestrado em Extensão Rural. Tempo no cargo: 5 anos. Perfil: Você é comunicativo e diplomático.`;
+        const perspectiva_yuri = `Você é responsável pelo relacionamento comunitário.`;
+        const camada_yuri = `IDENTIDADE: Nome: Yuri. Idade: 28 anos. Formação: Agronomia + Mestrado em Extensão Rural. Tempo no cargo: 5 anos. Perfil: comunicativo e diplomático.`;
         const prompt_yuri_final = `
-🎭 IDENTIDADE
+IDENTIDADE
 Sua primeira frase ao atender o telefone DEVE ser EXATAMENTE: "Pronto! Com quem eu falo?"
 Você é Yuri Almeida, 28 anos. Responsável por Relações com Comunidades.
-Você tem perfil calmo, reflexivo e muito voltado ao diálogo.
 
-🏘️ CONTEXTO COMUNITÁRIO
+CONTEXTO COMUNITÁRIO
 Comunidade mais próxima: Comunidade Santa Helena (8 km da área de aplicação).
 A empresa realiza notificação prévia às comunidades antes de aplicações.
 Houve um episódio passado em que a comunidade não foi avisada adequadamente, mas já foi corrigido.
 
-🎙️ ESTILO DE RESPOSTA (IMPORTANTE)
-Fale de forma tranquila, mas não se alongue demais. Você é um funcionário ocupado. Se perguntarem sobre conhecimentos gerais de agronomia que não tenham a ver com as comunidades vizinhas, diga "Olha, faz tempo que saí da faculdade, meu foco hoje é 100% o social aqui da região". Não dê aulas.
+ESTILO DE RESPOSTA
+Fale tranquilo, mas não se alongue. Se perguntarem sobre agronomia geral, diga "Olha, faz tempo que saí da faculdade, meu foco hoje é 100% o social aqui da região". Não dê aulas.
 `;
         const prompt_yuri = caso_base + estrutura_organizacional + perspectiva_yuri + modo_avancado + camada_yuri + prompt_yuri_final;
 
         const personagens = {
             cristiano: { voz: "echo", prompt: prompt_cristiano, avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.20-PM.png" },
-            natalia: { voz: "coral", prompt: prompt_natalia, avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.05-PM.png" },
-            isadora: { voz: "marin", prompt: prompt_isadora, avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.11-PM.png" },
-            yuri: { voz: "cedar", prompt: prompt_yuri, avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.27-PM.png" }
+            natalia:   { voz: "coral", prompt: prompt_natalia,   avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.05-PM.png" },
+            isadora:   { voz: "marin", prompt: prompt_isadora,   avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.11-PM.png" },
+            yuri:      { voz: "cedar", prompt: prompt_yuri,      avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.27-PM.png" }
         };
 
-
-        // ==========================================
-        // LÓGICA DA INTERFACE E WEBRTC
-        // ==========================================
-        let peerConnection;
-        let dataChannel;
-        let localStream;
-        let dialingTimeout;
+        let peerConnection, dataChannel, localStream, dialingTimeout;
 
         document.getElementById('personagemSelect').addEventListener('change', function() {
-            const personagemSelecionado = this.value;
-            document.getElementById('avatarPersonagem').src = personagens[personagemSelecionado].avatar;
+            document.getElementById('avatarPersonagem').src = personagens[this.value].avatar;
         });
 
         function irParaSimulacao() {
             document.getElementById('telaApresentacao').classList.add('hidden');
             document.getElementById('telaSimulacao').classList.remove('hidden');
-            initAudio(); // Inicializa o contexto de áudio no primeiro clique do usuário
+            initAudio();
         }
-
         function voltarApresentacao() {
             if(peerConnection || dialingTimeout) encerrarChamada();
             document.getElementById('telaSimulacao').classList.add('hidden');
             document.getElementById('telaApresentacao').classList.remove('hidden');
         }
-
         function iniciarProcessoChamada() {
             atualizarStatus("Discando...", false);
             document.getElementById('startBtn').disabled = true;
             document.getElementById('stopBtn').disabled = false;
             document.getElementById('personagemSelect').disabled = true;
-
-            // Toca som de teclas gerado pelo navegador
             playDialingSound();
-
-            dialingTimeout = setTimeout(() => {
-                iniciarConexaoWebRTC();
-            }, 1500);
+            dialingTimeout = setTimeout(() => { iniciarConexaoWebRTC(); }, 1500);
         }
 
         async function iniciarConexaoWebRTC() {
             const personagemSelecionado = document.getElementById('personagemSelect').value;
             const configPersonagem = personagens[personagemSelecionado];
-
             atualizarStatus("Chamando...", false);
-            
-            // Toca o som de "chamando" (tuuu... tuuu...)
             playRingingSound();
-
             try {
-                // Busca token temporário no servidor — a chave real nunca chega ao browser
                 const sessionRes = await fetch('/api/session');
                 if (!sessionRes.ok) throw new Error("Servidor indisponível. Avise o professor.");
                 const sessionData = await sessionRes.json();
                 if (sessionData.error) throw new Error(sessionData.error);
                 const ephemeralKey = sessionData.value || (sessionData.client_secret && sessionData.client_secret.value);
-                if (!ephemeralKey) throw new Error("Token inválido recebido do servidor: " + JSON.stringify(sessionData));
+                if (!ephemeralKey) throw new Error("Token inválido: " + JSON.stringify(sessionData));
 
                 localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 peerConnection = new RTCPeerConnection();
-
-                peerConnection.ontrack = (event) => {
-                    document.getElementById('audioElement').srcObject = event.streams[0];
-                };
-
-                localStream.getTracks().forEach(track => {
-                    peerConnection.addTrack(track, localStream);
-                });
-
+                peerConnection.ontrack = (event) => { document.getElementById('audioElement').srcObject = event.streams[0]; };
+                localStream.getTracks().forEach(track => { peerConnection.addTrack(track, localStream); });
                 dataChannel = peerConnection.createDataChannel("oai-events");
-                
+
                 dataChannel.addEventListener("open", () => {
-                    // Para o som de chamada assim que a IA atende
                     stopAudio();
-                    
-                    // 1. Envia as instruções do personagem
                     const sessionUpdate = {
                         type: "session.update",
                         session: {
+                            type: "realtime",
                             instructions: configPersonagem.prompt,
-                            voice: configPersonagem.voz,
-                            turn_detection: {
-                                type: "server_vad",
-                                threshold: 0.6,
-                                prefix_padding_ms: 300,
-                                silence_duration_ms: 800
+                            audio: {
+                                input: {
+                                    turn_detection: {
+                                        type: "semantic_vad",
+                                        eagerness: "low",
+                                        create_response: true,
+                                        interrupt_response: false
+                                    }
+                                }
                             }
                         }
                     };
                     dataChannel.send(JSON.stringify(sessionUpdate));
-                    
-                    // 2. Força a IA a falar primeiro atendendo o telefone
                     const forceGreeting = {
                         type: "conversation.item.create",
                         item: {
@@ -481,10 +329,7 @@ Fale de forma tranquila, mas não se alongue demais. Você é um funcionário oc
                         }
                     };
                     dataChannel.send(JSON.stringify(forceGreeting));
-                    
-                    // 3. Pede para a IA gerar a resposta de áudio imediatamente
                     dataChannel.send(JSON.stringify({ type: "response.create" }));
-
                     const nome = document.getElementById('personagemSelect').options[document.getElementById('personagemSelect').selectedIndex].text.split('–')[0].trim();
                     atualizarStatus(`Em ligação com ${nome}`, true);
                 });
@@ -504,14 +349,14 @@ Fale de forma tranquila, mas não se alongue demais. Você é um funcionário oc
                 const response = await fetch("https://api.openai.com/v1/realtime/calls", {
                     method: "POST",
                     body: formData,
-                    headers: {
-                        "Authorization": `Bearer ${ephemeralKey}`
-                    }
+                    headers: { "Authorization": `Bearer ${ephemeralKey}` }
                 });
 
-                if (!response.ok) throw new Error("Erro na API da OpenAI");
-
                 const answerSdp = await response.text();
+                console.log("Status:", response.status, "Resposta:", answerSdp);
+                if (!response.ok) throw new Error(`OpenAI retornou ${response.status}: ${answerSdp}`);
+                if (!answerSdp.startsWith("v=")) throw new Error("Resposta da OpenAI não é um SDP válido: " + answerSdp);
+
                 await peerConnection.setRemoteDescription({ type: "answer", sdp: answerSdp });
 
             } catch (error) {
@@ -525,10 +370,8 @@ Fale de forma tranquila, mas não se alongue demais. Você é um funcionário oc
         function encerrarChamada() {
             clearTimeout(dialingTimeout);
             stopAudio();
-            
             if (peerConnection) { peerConnection.close(); peerConnection = null; }
             if (localStream) { localStream.getTracks().forEach(track => track.stop()); localStream = null; }
-            
             document.getElementById('startBtn').disabled = false;
             document.getElementById('stopBtn').disabled = true;
             document.getElementById('personagemSelect').disabled = false;
@@ -538,8 +381,7 @@ Fale de forma tranquila, mas não se alongue demais. Você é um funcionário oc
         function atualizarStatus(mensagem, gravando) {
             document.getElementById('statusText').innerText = mensagem;
             const icone = document.getElementById('recordingIcon');
-            if (gravando) icone.classList.remove('hidden');
-            else icone.classList.add('hidden');
+            if (gravando) icone.classList.remove('hidden'); else icone.classList.add('hidden');
         }
     </script>
 </body>
