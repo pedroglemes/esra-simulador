@@ -11,7 +11,7 @@ module.exports = function handler(req, res) {
         expires_after: { anchor: 'created_at', seconds: 600 },
         session: {
             type: 'realtime',
-            model: 'gpt-realtime'
+            model: 'gpt-realtime-2'
         }
     });
 
