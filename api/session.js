@@ -7,7 +7,13 @@ module.exports = function handler(req, res) {
         return res.status(500).json({ error: 'OPENAI_API_KEY não configurada no servidor.' });
     }
 
-    const body = JSON.stringify({ model: 'gpt-realtime-1.5', ttl: 60 });
+    const body = JSON.stringify({
+        expires_after: { anchor: 'created_at', seconds: 600 },
+        session: {
+            type: 'realtime',
+            model: 'gpt-realtime'
+        }
+    });
 
     const options = {
         hostname: 'api.openai.com',
