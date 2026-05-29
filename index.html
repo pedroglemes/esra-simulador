@@ -435,7 +435,8 @@ Fale de forma tranquila, mas não se alongue demais. Você é um funcionário oc
                 if (!sessionRes.ok) throw new Error("Servidor indisponível. Avise o professor.");
                 const sessionData = await sessionRes.json();
                 if (sessionData.error) throw new Error(sessionData.error);
-                const ephemeralKey = sessionData.client_secret.value;
+                const ephemeralKey = sessionData.value || (sessionData.client_secret && sessionData.client_secret.value);
+                if (!ephemeralKey) throw new Error("Token inválido recebido do servidor: " + JSON.stringify(sessionData));
 
                 localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 peerConnection = new RTCPeerConnection();
