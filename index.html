@@ -320,16 +320,17 @@ Fale tranquilo, mas não se alongue. Se perguntarem sobre agronomia geral, diga 
                             instructions: configPersonagem.prompt,
                             audio: {
                                 input: {
+                                    noise_reduction: { type: "far_field" },
                                     turn_detection: {
-                                        type: "semantic_vad",
-                                        eagerness: "low",
+                                        type: "server_vad",
+                                        threshold: 0.85,
+                                        prefix_padding_ms: 500,
+                                        silence_duration_ms: 1500,
                                         create_response: true,
                                         interrupt_response: false
                                     }
                                 }
-                            }
-                        }
-                    };
+                            };
                     dataChannel.send(JSON.stringify(sessionUpdate));
                     const forceGreeting = {
                         type: "conversation.item.create",
