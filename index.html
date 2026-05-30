@@ -211,6 +211,11 @@ Evita demonstrar incerteza.
 `;
 
         const prompt_cristiano = caso_base + estrutura_organizacional + perspectiva_cristiano + modo_avancado + camada_cristiano + `
+🎤 TOM DE VOZ
+Sua voz deve soar como a de um homem maduro, experiente, com timbre grave e pausado.
+Fale com cadência tranquila e segura, como alguém que tem experiência de campo.
+Evite tom jovem ou apressado.
+
 🎭 IDENTIDADE
 
 Você é Cristiano Almeida, 36 anos, Engenheiro Florestal formado pela Universidade Federal de Viçosa (UFV).
@@ -542,6 +547,11 @@ Pode demonstrar cautela ao falar de riscos ambientais.
 `;
 
         const prompt_natalia = caso_base + estrutura_organizacional + perspectiva_natalia + modo_avancado + camada_natalia + `
+🎤 TOM DE VOZ
+Sua voz deve soar como a de uma mulher madura, experiente, com timbre encorpado e pausado.
+Fale com cadência calma e segura, como uma profissional sênior em ambiente corporativo.
+Evite tom jovem, ansioso ou apressado.
+
 🎭 IDENTIDADE
 
 Você é Natália Martins, 34 anos.
@@ -1411,8 +1421,8 @@ A condução da investigação continua sendo responsabilidade do aluno.
 `;
 
         const personagens = {
-            cristiano: { voz: "echo",  prompt: prompt_cristiano, avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.20-PM.png" },
-            natalia:   { voz: "coral", prompt: prompt_natalia,   avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.05-PM.png" },
+            cristiano: { voz: "ash",   prompt: prompt_cristiano, avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.20-PM.png" },
+            natalia:   { voz: "sage",  prompt: prompt_natalia,   avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.05-PM.png" },
             isadora:   { voz: "marin", prompt: prompt_isadora,   avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.11-PM.png" },
             yuri:      { voz: "cedar", prompt: prompt_yuri,      avatar: "https://cienciasflorestaisufmg.com.br/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-20-as-5.30.27-PM.png" }
         };
@@ -1461,13 +1471,17 @@ A condução da investigação continua sendo responsabilidade do aluno.
                 localStream.getTracks().forEach(track => { peerConnection.addTrack(track, localStream); });
                 dataChannel = peerConnection.createDataChannel("oai-events");
 
-                dataChannel.addEventListener("open", () => {
-                    stopAudio();
-                    const sessionUpdate = {
+                // Controla se o VAD já foi ativado (evita ativar várias vezes)
+                let vadAtivado = false;
+
+                // Função que ativa o VAD após a saudação terminar
+                function ativarVAD() {
+                    if (vadAtivado) return;
+                    vadAtivado = true;
+                    dataChannel.send(JSON.stringify({
                         type: "session.update",
                         session: {
                             type: "realtime",
-                            instructions: configPersonagem.prompt,
                             audio: {
                                 input: {
                                     noise_reduction: { type: "far_field" },
@@ -1482,8 +1496,44 @@ A condução da investigação continua sendo responsabilidade do aluno.
                                 }
                             }
                         }
+                    }));
+                    console.log("VAD ativado — pode falar agora.");
+                }
+
+                // Escuta eventos do servidor para saber quando a saudação termina
+                dataChannel.addEventListener("message", (event) => {
+                    try {
+                        const msg = JSON.parse(event.data);
+                        // Quando a IA termina de falar a saudação, ativamos o VAD
+                        if (msg.type === "response.done" && !vadAtivado) {
+                            // Pequeno delay para garantir que o áudio terminou de tocar
+                            setTimeout(ativarVAD, 500);
+                        }
+                    } catch (e) { /* mensagem não-JSON, ignora */ }
+                });
+
+                dataChannel.addEventListener("open", () => {
+                    stopAudio();
+
+                    // 1. Envia instruções com VAD DESATIVADO (modo manual)
+                    //    Isso impede que o áudio da própria saudação seja interpretado
+                    //    como interrupção do usuário, evitando o loop de travamento.
+                    const sessionUpdate = {
+                        type: "session.update",
+                        session: {
+                            type: "realtime",
+                            instructions: configPersonagem.prompt,
+                            audio: {
+                                input: {
+                                    noise_reduction: { type: "far_field" },
+                                    turn_detection: null
+                                }
+                            }
+                        }
                     };
                     dataChannel.send(JSON.stringify(sessionUpdate));
+
+                    // 2. Solicita a saudação inicial
                     const forceGreeting = {
                         type: "conversation.item.create",
                         item: {
@@ -1494,6 +1544,7 @@ A condução da investigação continua sendo responsabilidade do aluno.
                     };
                     dataChannel.send(JSON.stringify(forceGreeting));
                     dataChannel.send(JSON.stringify({ type: "response.create" }));
+
                     const nome = document.getElementById('personagemSelect').options[document.getElementById('personagemSelect').selectedIndex].text.split('–')[0].trim();
                     atualizarStatus(`Em ligação com ${nome}`, true);
                 });
