@@ -2,11 +2,17 @@ const https = require('https');
 
 module.exports = function handler(req, res) {
     const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) return res.status(500).json({ error: 'OPENAI_API_KEY não configurada.' });
+
+    if (!apiKey) {
+        return res.status(500).json({ error: 'OPENAI_API_KEY não configurada no servidor.' });
+    }
 
     const body = JSON.stringify({
         expires_after: { anchor: 'created_at', seconds: 600 },
-        session: { type: 'realtime', model: 'gpt-realtime-2' }
+        session: {
+            type: 'realtime',
+            model: 'gpt-realtime'
+        }
     });
 
     const options = {
@@ -25,13 +31,18 @@ module.exports = function handler(req, res) {
         response.on('data', chunk => data += chunk);
         response.on('end', () => {
             try {
-                res.status(response.statusCode).json(JSON.parse(data));
+                const parsed = JSON.parse(data);
+                res.status(response.statusCode).json(parsed);
             } catch (e) {
-                res.status(500).json({ error: 'Resposta inválida: ' + data });
+                res.status(500).json({ error: 'Resposta inválida da OpenAI: ' + data });
             }
         });
     });
 
-    request.on('error', (err) => res.status(500).json({ error: err.message }));
-    request.write(body); request.end();
+    request.on('error', (err) => {
+        res.status(500).json({ error: err.message });
+    });
+
+    request.write(body);
+    request.end();
 };
